@@ -1,0 +1,4 @@
+#!/bin/bash
+# {{ ansible_managed | comment }}
+wget {{ adblock_file_remote_hosts_blocked }} -O {{ adblock_file_local_hosts_blocked }} && systemctl restart dnsmasq.service
+

@@ -1,0 +1,12 @@
+# {{ ansible_managed | comment }}
+domain-needed
+bogus-priv
+no-resolv
+server={{ adblock_DNS_server1 }}
+server={{ adblock_DNS_server2 }}
+listen-address=127.0.0.1
+{% if adblock_manage_openvpn|bool %}
+listen-address={{ adblock_openvpn_server_ip }}
+{% endif %}
+addn-hosts={{ adblock_file_local_hosts_blocked }}
+

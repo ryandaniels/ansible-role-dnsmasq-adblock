@@ -1,0 +1,13 @@
+---
+- name: restart dnsmasq
+  systemd:
+    name: dnsmasq
+    state: restarted
+    enabled: yes
+
+- name: restart openvpn
+  systemd:
+    name: openvpn
+    state: restarted
+    enabled: yes
+

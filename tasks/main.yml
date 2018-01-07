@@ -1,0 +1,67 @@
+---
+- block:
+  - name: yum | Install dnsmasq package
+    yum:
+      name: "{{item}}"
+      state: latest
+      update_cache: yes
+    environment: "{{proxy_env}}"
+    register: stat_yum_install_results
+    until: '"failed" not in stat_yum_install_results'
+    retries: 2
+    delay: 30
+    with_items:
+      - dnsmasq
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+
+- block:
+  - name: apt | Install dnsmasq package
+    apt:
+      name: "{{item}}"
+      state: latest
+      update_cache: yes
+    environment: "{{proxy_env}}"
+    register: stat_apt_install_results
+    until: '"failed" not in stat_apt_install_results'
+    retries: 2
+    delay: 30
+    with_items:
+      - dnsmasq
+  when: ansible_os_family == "Debian"
+
+- name: Download hosts file to use for hosts_blocked {{ adblock_file_local_hosts_blocked }}
+  get_url:
+    url: "{{ adblock_file_remote_hosts_blocked }}"
+    dest: "{{ adblock_file_local_hosts_blocked }}"
+    mode: 0644
+
+- name: dnsmasq | Copy file dnsmasq.conf
+  template:
+    src: "templates/dnsmasq.conf.j2"
+    dest: "/etc/dnsmasq.conf"
+    mode: 0644
+  notify:
+    - restart dnsmasq
+
+- name: dnsmasq | Copy file for crontab {{ adblock_file_local_adblock_script }}
+  template:
+    src: "templates/adblock_dl_hosts.j2"
+    dest: "{{ adblock_file_local_adblock_script }}"
+    mode: 0744
+
+#Credit to remove duplicate lines and add only what you specify: https://relativkreativ.at/articles/how-to-use-ansibles-lineinfile-module-in-a-bulletproof-way
+- name: Remove lines with unwanted occurrences of dhcp-option DNS
+  lineinfile: dest="{{ adblock_openvpn_server_config_file }}"
+              regexp="^push \"dhcp-option DNS (?!{{ adblock_openvpn_server_ip|replace('.', '\.') }})"
+              state=absent
+              backup=no
+  notify: restart openvpn
+  when: adblock_manage_openvpn | bool
+
+- name: Openvpn | Make sure Openvpn IP is only IP in openvpn server conf file (to use dnsmasq for adblocking)
+  lineinfile: dest="{{ adblock_openvpn_server_config_file }}" regexp="{{ item.regex }}" line="{{ item.line }}" insertafter="{{ item.insertafter }}" backup=no
+  with_items:
+    - {regex: 'push "dhcp-option DNS .*', line: 'push "dhcp-option DNS {{ adblock_openvpn_server_ip }}"', insertafter: '^server'}
+  notify: restart openvpn
+  when: adblock_manage_openvpn | bool
+
