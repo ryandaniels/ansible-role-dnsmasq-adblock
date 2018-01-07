@@ -7,6 +7,8 @@ Distros tested
 ------------
 
 * Ubuntu 16.04
+* Raspbian Jessie
+* Raspbian Stretch
 
 
 Prerequisites
