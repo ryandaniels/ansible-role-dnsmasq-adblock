@@ -1,6 +1,6 @@
 # ansible-role-dnsmasq-adblock
 
-Use dnsmasq for adblocking with OpenVPN. Use this Ansible role after installing OpenVPN ( [PiVPN](https://github.com/pivpn/pivpn) or [Streisand](https://github.com/StreisandEffect/streisand) ) on a RaspberryPi or a VPS for example.  
+Use dnsmasq for adblocking with OpenVPN. Use this Ansible role after installing OpenVPN ([PiVPN](https://github.com/pivpn/pivpn) or [Streisand](https://github.com/StreisandEffect/streisand)) on a RaspberryPi or a VPS for example.  
 
 
 Distros tested
@@ -47,7 +47,7 @@ Example Playbook install-dnsmasq-adblock.yml
 Prep
 ------------
 
-- install OpenVPN (manually, pivpn, or Streisand)
+- Install OpenVPN (manually, pivpn, or Streisand)
 
 To install OpenVPN via PiVPN, follow the [steps](https://github.com/pivpn/pivpn#installation).
 
@@ -66,13 +66,13 @@ git clone https://github.com/StreisandEffect/streisand.git && cd streisand
 Usage
 ------------
 
-Install if not using Streisand.  
+- Install if not using Streisand.  
 Also modify OpenVPN config to work with adblocking (copy openvpn IP to dnsmasq config file and modify openvpn config file.)
 ```
 ansible-playbook install-dnsmasq-adblock.yml --extra-vars "inventory=openvpn-server" -i hosts
 ```
 
-Install if using Streisand (since  Streisand is already using dnsmasq and OpenVPN together):
+- Install if using Streisand (since Streisand is already using dnsmasq and OpenVPN together):
 ```
 ansible-playbook install-dnsmasq-adblock.yml --extra-vars "inventory=streisand-host adblock_manage_openvpn=false" -i ~/streisand/inventories/inventory-existing
 ```
