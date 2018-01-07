@@ -87,8 +87,8 @@ Wherever you get a server from, be sure you're obeying their TOS. I'm not respon
 
 Acknowledgements
 ----------------
-[Steven Black](https://github.com/StevenBlack/hosts) for his great consolidated hosts file for malware & adblocking.
-[Bob Nisco](https://github.com/BobNisco/adblocking-vpn) for putting together the information and the manual commands of the steps and configuration of dnsmasq for adblocking.
-[Streisand](https://github.com/StreisandEffect/streisand) is an amazing auto-installer using Ansible for many privacy related tools, including OpenVPN.
-[PiVPN](https://github.com/pivpn/pivpn) is a simple installer if you have a RaspberryPi and want to run OpenVPN.
+[Steven Black](https://github.com/StevenBlack/hosts) for his great consolidated hosts file for malware & adblocking.  
+[Bob Nisco](https://github.com/BobNisco/adblocking-vpn) for putting together the information and the manual commands of the steps and configuration of dnsmasq for adblocking.  
+[Streisand](https://github.com/StreisandEffect/streisand) is an amazing auto-installer using Ansible for many privacy related tools, including OpenVPN.  
+[PiVPN](https://github.com/pivpn/pivpn) is a simple installer if you have a RaspberryPi and want to run OpenVPN.  
 
