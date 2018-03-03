@@ -8,5 +8,6 @@ listen-address=127.0.0.1
 {% if adblock_manage_openvpn|bool %}
 listen-address={{ adblock_openvpn_server_ip }}
 {% endif %}
+{% if adblock_enable|bool %}
 addn-hosts={{ adblock_file_local_hosts_blocked }}
-
+{% endif %}

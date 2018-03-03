@@ -1,5 +1,7 @@
 ---
 debug_enabled_default: false
+#Enable (true) or disable (false) extra hosts file with blocked domains. (true|false)
+adblock_enable: true
 adblock_file_remote_hosts_blocked: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 adblock_file_local_hosts_blocked: /etc/hosts_blocked
 #DNS servers (OpenDNS used below)
@@ -11,4 +13,3 @@ adblock_manage_openvpn: true
 #OpenVPN server IP
 adblock_openvpn_server_ip: 10.8.0.1
 adblock_openvpn_server_config_file: /etc/openvpn/server.conf
-

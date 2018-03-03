@@ -20,6 +20,7 @@ You need a Ubuntu/Debian server to run OpenVPN. You can use a RaspberryPi or you
 Default Settings
 ------------
 
+- **adblock_enable**: true|false (default true). Enable or disable extra hosts file with blocked domains.
 - **adblock_file_remote_hosts_blocked**: URL of hosts file to use for adblocking
 - **adblock_file_local_hosts_blocked**: local file for adblock hosts
 #DNS servers (OpenDNS used below)

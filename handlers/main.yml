@@ -10,4 +10,3 @@
     name: openvpn
     state: restarted
     enabled: yes
-
