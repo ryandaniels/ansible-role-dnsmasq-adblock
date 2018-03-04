@@ -10,20 +10,18 @@ Use dnsmasq for adblocking with OpenVPN. Use this Ansible role after installing 
 
 ## Prerequisites
 
-You need a Ubuntu/Debian server to run OpenVPN. You can use a RaspberryPi or your own VPS. For example you can use Linode or Vultr.
+You need a Ubuntu/Debian server to run OpenVPN. You can use a RaspberryPi or your own VPS. For example you can use [Linode](https://www.linode.com/?r=1bf6dd5223383ba833be4d630960bc6cf59fbdc5) or [Vultr](https://www.vultr.com/?ref=7298373).
 
 ## Default Settings
 
 * **adblock_enable**: true|false (default true). Enable or disable extra hosts file with blocked domains.
 * **adblock_file_remote_hosts_blocked**: URL of hosts file to use for adblocking
-* **adblock_file_local_hosts_blocked**: local file for adblock hosts
-
-  DNS servers (OpenDNS used below)
+* **adblock_file_local_hosts_blocked**: local file for adblock hosts  
+DNS servers (OpenDNS used below)
 * **adblock_DNS_server1**: 208.67.222.222
 * **adblock_DNS_server2**: 208.67.220.220
-* **adblock_file_local_adblock_script**: crontab script to update adblock hosts file
-
-  If adblock_manage_openvpn: true, copy openvpn ip to dnsconf conf file and modify openvpn conf file.
+* **adblock_file_local_adblock_script**: crontab script to update adblock hosts file  
+If adblock_manage_openvpn: true, copy openvpn ip to dnsconf conf file and modify openvpn conf file.
 * **adblock_manage_openvpn**: true|false (default true)
 * **adblock_openvpn_server_ip**: OpenVPN server's OpenVPN IP
 * **adblock_openvpn_server_config_file**: OpenVPN config file
