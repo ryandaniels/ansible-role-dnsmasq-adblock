@@ -42,6 +42,7 @@
     mode: 0644
   notify:
     - restart dnsmasq
+  tag: configure
 
 - name: dnsmasq | Copy file for crontab {{ adblock_file_local_adblock_script }}
   template:
@@ -64,4 +65,3 @@
     - {regex: 'push "dhcp-option DNS .*', line: 'push "dhcp-option DNS {{ adblock_openvpn_server_ip }}"', insertafter: '^server'}
   notify: restart openvpn
   when: adblock_manage_openvpn | bool
-
