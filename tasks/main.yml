@@ -42,7 +42,7 @@
     mode: 0644
   notify:
     - restart dnsmasq
-  tag: configure
+  tag: toggle
 
 - name: dnsmasq | Copy file for crontab {{ adblock_file_local_adblock_script }}
   template:
