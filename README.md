@@ -2,7 +2,6 @@
 
 Use dnsmasq for adblocking with OpenVPN. Use this Ansible role after installing OpenVPN ([PiVPN](https://github.com/pivpn/pivpn) or [Streisand](https://github.com/StreisandEffect/streisand)) on a RaspberryPi or a VPS for example.  
 
-
 ## Distros tested
 
 * Ubuntu 16.04
