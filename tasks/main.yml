@@ -7,7 +7,7 @@
       update_cache: yes
     environment: "{{proxy_env}}"
     register: stat_yum_install_results
-    until: '"failed" not in stat_yum_install_results'
+    until: "stat_yum_install_results is success"
     retries: 2
     delay: 30
     with_items:
@@ -22,7 +22,7 @@
       update_cache: yes
     environment: "{{proxy_env}}"
     register: stat_apt_install_results
-    until: '"failed" not in stat_apt_install_results'
+    until: "stat_apt_install_results is success"
     retries: 2
     delay: 30
     with_items:
