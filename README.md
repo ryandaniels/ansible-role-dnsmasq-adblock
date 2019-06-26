@@ -60,13 +60,13 @@ git clone https://github.com/StreisandEffect/streisand.git && cd streisand
 * Install if not using Streisand.  
 Also modify OpenVPN config to work with adblocking (copy openvpn IP to dnsmasq config file and modify openvpn config file.)
 
-```
+```bash
 ansible-playbook install-dnsmasq-adblock.yml --extra-vars "inventory=openvpn-server" -i hosts
 ```
 
 * Install if using Streisand (since Streisand is already using dnsmasq and OpenVPN together):
 
-```
+```bash
 ansible-playbook install-dnsmasq-adblock.yml --extra-vars "inventory=streisand-host adblock_manage_openvpn=false" -i ~/streisand/inventories/inventory-existing
 ```
 
